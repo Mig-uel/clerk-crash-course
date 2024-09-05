@@ -41,15 +41,37 @@ const RegisterPage = () => {
   }
 
   // verify user email code
-  const onPressVerify = async (e: FormEvent) => {}
+  const onPressVerify = async (e: FormEvent) => {
+    e.preventDefault()
+
+    if (!isLoaded) return
+
+    try {
+      const completeSignUp = await signUp.attemptEmailAddressVerification({
+        code,
+      })
+
+      if (completeSignUp.status !== 'complete') {
+        /* investigate the response, to see if there was an error or if the user needs to complete more steps */
+
+        console.log(JSON.stringify(completeSignUp, null, 2))
+      }
+
+      if (completeSignUp.status === 'complete') {
+        await setActive({ session: completeSignUp.createdSessionId })
+
+        router.push('/')
+      }
+    } catch (error) {
+      console.log(JSON.stringify(error, null, 2))
+    }
+  }
 
   return (
     <div className='border p-5 rounded w-[500px]'>
-      <h1 onSubmit={handleSubmit} className='text-2xl mb-4'>
-        Register
-      </h1>
+      <h1 className='text-2xl mb-4'>Register</h1>
       {!pendingVerification && (
-        <form action=''>
+        <form onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor='firstName'
