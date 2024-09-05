@@ -1,3 +1,5 @@
+'use client'
+
 import {
   SignedIn,
   SignedOut,
@@ -21,7 +23,15 @@ const Header = () => {
 
         <div className='text-white flex gap-5'>
           <SignedIn>
-            <UserButton showName />
+            <UserButton showName>
+              <UserButton.MenuItems>
+                <UserButton.Link
+                  label='Profile'
+                  href='/profile'
+                  labelIcon='Pr'
+                />
+              </UserButton.MenuItems>
+            </UserButton>
           </SignedIn>
           <SignedOut>
             <SignInButton mode='modal' />
