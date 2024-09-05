@@ -13,10 +13,13 @@ const Header = () => {
         </div>
 
         <div className='text-white'>
-          <Link href='sign-in' className='text-gray-300 hover:text-white mr-4'>
+          <Link href='/sign-in' className='text-gray-300 hover:text-white mr-4'>
             Sign In
           </Link>
-          <Link href='sign-out' className='text-gray-300 hover:text-white mr-4'>
+          <Link
+            href='/sign-out'
+            className='text-gray-300 hover:text-white mr-4'
+          >
             Sign Out
           </Link>
         </div>
