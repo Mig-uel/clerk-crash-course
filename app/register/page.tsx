@@ -17,7 +17,28 @@ const RegisterPage = () => {
   const [code, setCode] = useState<string>('')
 
   // form submit
-  const handleSubmit = async (e: FormEvent) => {}
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+
+    if (!isLoaded) return
+
+    try {
+      await signUp.create({
+        firstName,
+        lastName,
+        password,
+        emailAddress: email,
+      })
+
+      // send email
+      await signUp.prepareEmailAddressVerification({ strategy: 'email_code' })
+
+      // change UI to pendingVerificationTrue
+      setPendingVerification((prev) => !prev)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   // verify user email code
   const onPressVerify = async (e: FormEvent) => {}
