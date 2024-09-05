@@ -21,7 +21,7 @@ const Header = () => {
 
         <div className='text-white flex gap-5'>
           <SignedIn>
-            <UserButton />
+            <UserButton showName />
           </SignedIn>
           <SignedOut>
             <SignInButton mode='modal' />
