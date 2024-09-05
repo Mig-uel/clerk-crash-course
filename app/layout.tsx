@@ -9,6 +9,7 @@ import {
   SignOutButton,
 } from '@clerk/nextjs'
 import Header from '@/components/header.component'
+import { dark } from '@clerk/themes'
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -32,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={{ baseTheme: dark }}>
       <html lang='en'>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
