@@ -1,6 +1,18 @@
+'use client'
+
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignOutButton,
+  SignUpButton,
+  useAuth,
+} from '@clerk/nextjs'
 import Link from 'next/link'
 
 const Header = () => {
+  const user = useAuth()
+
   return (
     <>
       <nav className='bg-blue-700 py-4 px-6 flex items-center justify-between mb-5'>
@@ -12,13 +24,14 @@ const Header = () => {
           </Link>
         </div>
 
-        <div className='text-white'>
-          <Link href='/sign-in' className='text-gray-300 hover:text-white mr-4'>
-            Sign In
-          </Link>
-          <Link href='/sign-up' className='text-gray-300 hover:text-white mr-4'>
-            Sign Up
-          </Link>
+        <div className='text-white flex gap-5'>
+          <SignedIn>
+            <SignOutButton />
+          </SignedIn>
+          <SignedOut>
+            <SignInButton mode='modal' />
+            <SignUpButton mode='modal' />
+          </SignedOut>
         </div>
       </nav>
     </>
