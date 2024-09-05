@@ -1,18 +1,13 @@
-'use client'
-
 import {
   SignedIn,
   SignedOut,
   SignInButton,
-  SignOutButton,
   SignUpButton,
-  useAuth,
+  UserButton,
 } from '@clerk/nextjs'
 import Link from 'next/link'
 
 const Header = () => {
-  const user = useAuth()
-
   return (
     <>
       <nav className='bg-blue-700 py-4 px-6 flex items-center justify-between mb-5'>
@@ -26,7 +21,7 @@ const Header = () => {
 
         <div className='text-white flex gap-5'>
           <SignedIn>
-            <SignOutButton />
+            <UserButton />
           </SignedIn>
           <SignedOut>
             <SignInButton mode='modal' />
