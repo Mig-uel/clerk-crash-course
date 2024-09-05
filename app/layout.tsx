@@ -36,13 +36,11 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <SignOutButton />
-          </SignedIn>
-          {children}
+          <main className='container mx-auto'>
+            <div className='flex items-start justify-center min-h-screen'>
+              <div className='mt-20'>{children}</div>
+            </div>
+          </main>
         </body>
       </html>
     </ClerkProvider>
